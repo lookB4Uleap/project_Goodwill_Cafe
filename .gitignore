@@ -33,5 +33,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-/util/firebase.js
-/util/sqlconfig.js
+# /util/firebase.js
+# /util/sqlconfig.js
+
+/util
