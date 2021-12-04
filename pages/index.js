@@ -24,18 +24,18 @@ export default function Home({ special, cust }) {
   return (
     loading ? <div style={{ color: 'white' }}>loading...</div> :
     <>
-    <Navbar opt={0} />
+    
     <div className='Empty-Space'></div>
     <GlassContainer>
-        <div className={styles.header}>Goodwill Cafe</div>
-        <div className={styles.greeting}>Welcome</div>
-        <div className={styles.cardWrapper}>
+        <Navbar opt={0} />
+        <div className="Main">
+        <div className="Logo">Goodwill Cafe</div>
+        <div className="Card-Wrapper">
           <MediaCard title="Today's Special" subtitle={special.data.recordset[0].item_name} icon={faCoffee} color='brown' />
           <MediaCard title="Customer's Choice" subtitle={cust.data.recordset[0].item_name} icon={faCoffee} color='whitesmoke' />
-        </div>
-        <div className={styles.cardWrapper}>
           <MediaCard title="Try a snack" icon={faHamburger} color='green' />
           <MediaCard title="Special Offers" icon={faWineGlassAlt} color='red' />
+        </div>
         </div>
     </GlassContainer>
     </>

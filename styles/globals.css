@@ -13,20 +13,20 @@ body {
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  /* background-color: var(--background); */
+  background-color: var(--background);
   background-image: url('../public/images/Spectrum-Gradient.svg');
   background-size: cover;
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  flex-direction: row;
 }
 
 /* navbar */
 
-.Navbar-Container {
+/* .Navbar-Container {
   position: absolute;
   top: 0;
   left: 0;
@@ -35,10 +35,9 @@ body {
   flex-direction: column;
   width: 5rem;
   height: 100vh;
-  /* background-color: var(--alt2); */
-}
+} */
 
-.Navbar-Links {
+/* .Navbar-Links {
   margin-left: 10px;
   display: flex;
   justify-content: center;
@@ -55,25 +54,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; 
-}
+} */
 
-.Icon {
+/* .Icon {
   font-size: 45px;
-}
-/* 
-.Icon-Active {
-  font-size: 40px;
-  color: var(--main);
-}  */
+} */
 
-.Navbar-Links:hover {
+/* .Navbar-Links:hover {
   background-color: var(--alt2);
   border-radius: 10px;
   backdrop-filter: blur(5px);
-  /* border-top-left-radius: 10px; */
-}
+} */
 
-.Navbar-Active-Links {
+/* .Navbar-Active-Links {
   margin-left: 10px;
   display: flex;
   justify-content: center;
@@ -85,11 +78,11 @@ body {
   background-color: var(--alt2);
   border-radius: 10px;
   backdrop-filter: blur(5px);
-  /* border-top-left-radius: 10px;  */
-}
+ 
+} */
 
 /* glass container */
-.Glass-Container {
+/* .Glass-Container {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -105,18 +98,18 @@ body {
   z-index: 3;
   backdrop-filter: blur(1px);
   margin-bottom: 20px;
-}
+} */
 
 /* carausel */
 
-.carousel.slide {
+/* .carousel.slide {
   width: 100%;
   height: 80%;
-}
+} */
 
 /* Card Container */
 
-.Card-Container {
+/* .Card-Container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -125,7 +118,208 @@ body {
   width: 30vh;
   height: 30vh;
   margin: 5px;
-  /* backdrop-filter: blur(5px); */
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.Card-Container:hover {
+  background-color: var(--alt);
+}
+
+.Card-Title {
+  font-size: 1.5vw;
+}
+
+.Card-Subtitle {
+  font-size: 1vw;
+  color: teal;
+}
+
+.Card-Image-Container {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Card-Image {
+  font-size: 5.5vw;
+} */
+
+/* Empty Space */
+/* .Empty-Space {
+  height: 50px;
+} */
+
+/* @media only screen and (max-width: 720px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .Glass-Container {
+    flex-direction: column;
+    height: 50%;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .Empty-Space {
+    display: none;
+  }
+
+  .Card-Container {
+    height: 10vh;
+  }
+
+  .Navbar-Container {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .Navbar-Active-Links {
+    margin: 0;
+    padding: 0;
+  }
+
+  .Navbar-Links:hover {
+    margin: 0;
+    padding: 0;
+  }
+
+  .Card-Image {
+    font-size: 10vw;
+  }
+
+  .Image-Container .Icon{
+    size: 10px;
+  }
+
+  .Card-Title {
+    font-size: 5vw;
+  }
+
+  .Card-Subtitle {
+    font-size: 3vw;
+  }
+} */
+
+
+.Glass-Container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80vw;
+  height: 80vh;
+  max-width: 85rem;
+  max-height: 85rem;
+  background: linear-gradient(
+    to right bottom,
+    var(--alt),
+    var(--alt2) 
+  );
+  border-radius: 15px;
+  z-index: 3;
+  backdrop-filter: blur(1px);
+  margin-bottom: 20px;
+}
+
+.Navbar-Container {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Image-Container {
+  font-size: 3rem;
+}
+
+.Navbar-Links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 3.5rem;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Navbar-Links:hover {
+  background-color: var(--alt);
+  border-radius: 10px;
+  width: 3.5rem;
+  backdrop-filter: blur(5px);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Navbar-Active-Links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  cursor: pointer;
+  background-color: var(--background);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  margin-top: 10px;
+  margin-bottom: 10px;
+ 
+}
+
+.User-Image {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.Main {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.Logo {
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 100%;
+  padding: 10px;
+}
+
+.Card-Wrapper {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Card-Container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: var(--background);
+  width: 30vw;
+  height: 30vh;
+  margin: 5px;
   border-radius: 10px;
   padding: 20px;
   cursor: pointer;
@@ -156,7 +350,136 @@ body {
   font-size: 5.5vw;
 }
 
-/* Empty Space */
-.Empty-Space {
-  height: 50px;
+.btn-group {
+  width: 100%;
+}
+
+.Menu-Article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.list-group {
+  width: 50%;
+  cursor: pointer;
+} 
+
+.list-group div {
+  background-color: transparent;
+}
+
+.list-group div:hover {
+  backdrop-filter: blur(1px);
+}
+
+.Orders-List {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 10px;
+}
+
+.Space {
+  height: 100px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media only screen and (max-width: 720px) {
+  .Glass-Container {
+    flex-direction: column;
+    height: 90vh;
+  }
+
+  .Navbar-Container {
+    height: 10%;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .Image-Container {
+    font-size: 2rem;
+  }
+
+  .Main {
+    /* align-items: flex-start; */
+    justify-content: flex-start;
+    width: 100%;
+    padding: 5px;
+    /* height: 90vh; */
+    height: 90%;
+  }
+
+  .Logo {
+    font-size: 2rem;
+  }
+
+  .Card-Wrapper {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .Card-Container {
+    width: 90%;
+    height: 15vh;
+  }
+
+  .Card-Title {
+    font-size: 1rem;
+  }
+
+  .Card-Subtitle {
+    font-size: 1rem;
+  }
+
+  .Card-Image {
+    font-size: 2rem;
+  }
+
+  .btn-group {
+    width: 100%;
+  }
+
+  .list-group {
+    width: 100%;
+  }
+
+  .Orders-List {
+    overflow-x: auto;
+  }
+
+  .Orders-List table {
+    width: 100%;
+    font-size: 10px;
+    margin-left: 10px;
+    margin-top: 30px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 }

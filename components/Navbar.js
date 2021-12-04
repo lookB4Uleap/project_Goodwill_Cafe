@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import home from '../public/images/home.png'
-import menu from '../public/images/menu.png'
-import booking from '../public/images/booking.png'
-import orders from '../public/images/orders.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faCalendarCheck, faClipboardList, faHome, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faArchive, faBars, faHome, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../util/firebase'
+import { useRouter } from 'next/router'
 
 const Navbar = ({ opt }) => {
     const [user, loading] = useAuthState(auth)
+    const router = useRouter()
 
     useEffect(() => {
         if (opt != null) {
@@ -20,6 +18,7 @@ const Navbar = ({ opt }) => {
             links[opt].className = 'Navbar-Active-Links'
         }
         
+        // console.log(user)
         // let icons = document.querySelectorAll('.Icon')
         // icons[opt].className = 'Icon-Active' 
         // if (!loading){
@@ -34,7 +33,8 @@ const Navbar = ({ opt }) => {
     return (
         <>
         <div className='Navbar-Container'>
-            <div className='Navbar-Links'>
+            {/* <Image src={user?.photoURL} alt="User" /> */}
+            <div className='Navbar-Links' data-bs-toggle="tooltip" data-bs-placement="left" title="Home">
                 <Link href="/">
                     <div className='Image-Container'>
                         {/* <Image src={home} alt='home' /> */}
@@ -43,17 +43,23 @@ const Navbar = ({ opt }) => {
                 </Link>
             </div>
 
-            <div className='Navbar-Links'>
-                <Link href="/menu">
+            <div className='Navbar-Links' data-bs-toggle="tooltip" data-bs-placement="left" title="Menu">
+                <Link href="/menu" >
                     <div className='Image-Container'>
                         {/* <Image src={menu} alt='home' /> */}
                         <FontAwesomeIcon icon={faBars} className='Icon' />
                     </div>
                 </Link>
             </div>
+            
             {(user) ? 
-            <div className='Navbar-Links' onClick={async() => {await auth.signOut()}}>
-                <Link href="/">
+            <div className='Navbar-Links' title="Logout" 
+            onClick={async() => {
+                await auth.signOut()
+                router.replace("/")
+            }} 
+            data-bs-toggle="tooltip" data-bs-placement="left" >
+                <Link href="/" >
                     <div className='Image-Container'>
                         {/* <Image src={menu} alt='home' /> */}
                         <FontAwesomeIcon icon={faSignOutAlt} className='Icon' />
@@ -61,7 +67,7 @@ const Navbar = ({ opt }) => {
                 </Link>
             </div> :
 
-            <div className='Navbar-Links'>
+            <div className='Navbar-Links' title="Login">
                 <Link href="/login">
                     <div className='Image-Container'>
                         {/* <Image src={menu} alt='home' /> */}
@@ -69,6 +75,16 @@ const Navbar = ({ opt }) => {
                     </div>
                 </Link>
             </div>}
+
+            {(user) ? 
+            <div className='Navbar-Links' data-bs-toggle="tooltip" data-bs-placement="left" title="Previous Orders">
+                <Link href="/prev_orders" >
+                <div className='Image-Container'>
+                    <FontAwesomeIcon icon={faArchive} className='Icon' />
+                </div>
+                </Link>
+            </div>: <></>
+            }
             
         </div>
         </>

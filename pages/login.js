@@ -19,10 +19,14 @@ const uiConfig = {
 const login = () => {
     return (
         <>
-            <Navbar opt={2} />
+            
             <div className='Empty-Space'></div>
             <GlassContainer>
-            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+            <Navbar opt={2} />
+            <div className="Main">
+            <div className="Logo">Goodwill Cafe</div>
+            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} className="Menu-Article" />
+            </div>
             </GlassContainer>
         </>
     )

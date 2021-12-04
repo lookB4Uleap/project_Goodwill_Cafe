@@ -1,9 +1,7 @@
 import { faCoffee, faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 import GlassContainer from '../../components/GlassContainer'
 import Navbar from '../../components/Navbar'
 import styles from '../../styles/Item.module.css'
@@ -15,13 +13,13 @@ const Item = ({ item }) => {
     const router =  useRouter()
     const [orderSize, setOrderSize] = useState(1)
 
-    useEffect(() => {
-        // console.log(user)   
-    })
-
     const placeOrder = async() => {
-      console.log(user)
-      console.log(item)
+      // console.log(user)
+      // console.log(item)
+
+      if (!user)
+      router.replace('/login')
+
       const userDetails = {
         userId: user.uid,
         username: user.displayName,
@@ -34,7 +32,7 @@ const Item = ({ item }) => {
         orderSize: orderSize
       }
       const res = await fetch(
-        'http://localhost:3000/api/order',
+        '/api/order',
         {
           body: JSON.stringify({
             user: userDetails,
@@ -46,6 +44,7 @@ const Item = ({ item }) => {
           method: 'POST'
         }
       )
+      router.replace("/menu")
     }
 
     // if (!user) 
@@ -54,9 +53,9 @@ const Item = ({ item }) => {
     return (
         loading ? <div style={{ color: 'white' }}>loading...</div> :
         <>
-            <Navbar opt={1} />
-            <div className='Empty-Space'></div>
+
             <GlassContainer>
+              <Navbar opt={1} />
               <div className={styles.container}>
                 <div className={styles.innerContainer}>
                 <FontAwesomeIcon icon={faCoffee} className='Card-Image' />
@@ -65,28 +64,27 @@ const Item = ({ item }) => {
                 <div className={styles.innerContainer}>
                     {/* Price: &#8377;{item.data.recordset[0].item_price} */}
                     <div className={styles.inc}>
-                      Quantity :
+                      <div>Quantity :</div>
                       <div className={styles.button}
                         onClick={() => setOrderSize(orderSize + 1)}
                       > 
                         <FontAwesomeIcon icon={faPlusCircle} style={{ fontSize: 40 }} />
                       </div>
-                      <input type='number' min='1' 
+                      <div type='number' min='1' 
                         className={styles.input} 
-                        value={orderSize} 
-                        onChange={ e => {
-                          e.preventDefault()
-                          setOrderSize(e.target.value)
-                        }}
-                        />
+                        // onChange={ e => {
+                        //   e.preventDefault()
+                        //   setOrderSize(e.target.value)
+                        // }}
+                        >{orderSize}</div>
                       <div className={styles.button}
-                        onClick={() => setOrderSize(orderSize - 1)}
+                        onClick={() => setOrderSize((orderSize - 1) > 1 ? orderSize-1 : 1 )}
                       > 
                         <FontAwesomeIcon icon={faMinusCircle} style={{ fontSize: 40 }} />
                       </div>
                     </div>
                     Total Cost: &#8377;{item.data.recordset[0].item_price * orderSize}
-                    <button onClick={placeOrder}>Place Order</button>
+                    <button onClick={placeOrder} type="button" class="btn btn-primary" >Place Order</button>
                 </div>
               </div>
             </GlassContainer>
