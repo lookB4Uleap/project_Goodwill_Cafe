@@ -7,4 +7,5 @@ Frontend - NextJS
 Backend - SQL Database from Microsoft Azure
 
 ![Project Pics](image1.png)
-[Project Video](https://drive.google.com/file/d/1Ffgh7j0SX6Ojnn8uM1eaxjJNsOcF1Npw/view?usp=sharing)
+
+##[Project Video](https://drive.google.com/file/d/1Ffgh7j0SX6Ojnn8uM1eaxjJNsOcF1Npw/view?usp=sharing)
